@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% block meta %}
 <title>Registrasi Akun</title>
 {% endblock meta %} {% block content %}
+{% load widget_tweaks %}
 
 <div class="d-flex flex-column gap-5 align-items-center justify-content-center">
   <h3>Formulir Registrasi</h3>
@@ -9,14 +10,14 @@
     {% csrf_token %}
     <table>
         {% for field in form %}
-        <div class="container">
-            {{ field.label_tag }}<br>
-            {{ field }}
+        <div>
+            {{ field.label_tag }}
+            {{ field | add_class:"form-control"}}
             {{ field.errors }}
         </div>
         {% endfor %}
       <tr>
-        <td></td>
+        <td></td> 
         <td>
           <input
             class="btn btn-primary"
