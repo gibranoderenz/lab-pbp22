@@ -6,28 +6,26 @@
 <div class="d-flex flex-column gap-5 align-items-center justify-content-center">
   <h3>Formulir Registrasi</h3>
 
-  <form method="POST">
+  <form method="POST" style="width: 30%; max-width: 50%;">
     {% csrf_token %}
-    <table>
+   
         {% for field in form %}
-        <div>
+        <div class="mb-3">
             {{ field.label_tag }}
             {{ field | add_class:"form-control"}}
             {{ field.errors }}
         </div>
         {% endfor %}
-      <tr>
-        <td></td> 
-        <td>
+    
+        <div class="d-flex justify-content-end mt-3">
           <input
-            class="btn btn-primary"
-            type="submit"
-            name="submit"
-            value="Daftar"
+          class="btn btn-primary"
+          type="submit"
+          name="submit"
+          value="Daftar"
           />
-        </td>
-      </tr>
-    </table>
+        </div>
+
   </form>
 
   {% if messages %}
