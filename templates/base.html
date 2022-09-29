@@ -14,14 +14,13 @@
   </head> 
 
   <body>
-    <nav class="align-items-center navbar px-5 py-2 mb-4" style="background-color:  #20c997;">
-      <div class="align-items-center ">
-        <h5 class="m-0">Wishlist</h5>
-        <p>by Gibrano Fabien Derenz</p>
+    <nav class="d-flex align-items-center navbar px-5 py-3 mb-4" style="background-color: #20c997;>
+      <div class="d-flex align-items-center">
+        <p class="m-0"><strong>Wishlist</strong><br/> by Gibrano Fabien Derenz</p>
       </div>
-      <div class="d-flex gap-3 justify-items-center align-middle">
+      <div class="d-flex gap-3 justify-items-center align-items-center">
         {%  if user.is_active  %}
-        <p> Hey, {{ user.username }} </p>
+        <strong> Hey, {{ user.username }} </strong>
         <button class="btn btn-danger"><a class="text-white text-decoration-none" href="{% url 'wishlist:logout' %}">Logout</a></button>
         {% else %}
         <button class="btn btn-primary"><a class="text-white text-decoration-none" href="{% url 'wishlist:login' %}">Login</a></button>
