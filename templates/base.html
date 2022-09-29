@@ -1,18 +1,38 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    {% block meta %} {% endblock meta %}
+  </head> 
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  {% block meta %}
-  {% endblock meta %}
-</head>
-
-<body>
-  {% block content %}
-  {% endblock content %}
-</body>
-
+  <body>
+    <nav class="align-items-center navbar px-5 py-3 mb-4" style="background-color:  #20c997;">
+      <div class="d-flex align-items-center bg-secondary">
+        <h5>Wishlist</h5>
+        <p>by Gibrano Fabien Derenz</p>
+      </div>
+      <div class="d-flex gap-3 justify-items-center align-middle">
+        {%  if user.is_active  %}
+        <p> Hey, {{ user.username }} </p>
+        <button class="btn btn-danger"><a class="text-white text-decoration-none" href="{% url 'wishlist:logout' %}">Logout</a></button>
+        {% else %}
+        <button class="btn btn-primary"><a class="text-white text-decoration-none" href="{% url 'wishlist:login' %}">Login</a></button>
+        {% endif %}
+      </div>
+    </nav>
+    {% block content %} {% endblock content %}
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
