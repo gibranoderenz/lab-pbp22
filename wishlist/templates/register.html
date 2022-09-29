@@ -29,12 +29,12 @@
   </form>
 
   {% if messages %}
-  <ul>
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %}
+    <ul>
+      {% for message in messages %}
+      <p class="p-3 border border-primary text-primary">{{ message }}</p>
+      {% endfor %}
+    </ul>
+    {% endif %}
 </div>
 
 {% endblock content %}

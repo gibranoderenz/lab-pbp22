@@ -19,19 +19,19 @@
           class="btn btn-primary"
           type="submit"
           name="submit"
-          value="Daftar"
+          value="Login"
           />
         </div>
     </form>
 
 
-  {% if messages %}
-  <ul>
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %}
+    {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <p class="p-3 border border-danger text-danger">{{ message }}</p>
+      {% endfor %}
+    </ul>
+    {% endif %}
 </div>
 
 {% endblock content %}
