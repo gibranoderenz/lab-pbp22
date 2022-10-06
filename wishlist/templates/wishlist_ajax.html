@@ -1,0 +1,62 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(document).ready(() => {
+    $.get("{% url 'wishlist:show_json' %}", (data) => {
+      $.each(data, (index, value) => {
+        $("table").append(
+          "<tr>" +
+            "<td>" +
+            value.fields.nama_barang +
+            "</td>" +
+            "<td>" +
+            value.fields.harga_barang +
+            "</td>" +
+            "<td>" +
+            value.fields.deskripsi +
+            "</td>" +
+            "</tr>"
+        );
+      });
+    });
+  });
+
+  const submitData = () => {
+    $.post("ajax/submit", $(form).serialize());
+  };
+</script>
+
+<table class="table">
+  <tr>
+    <th>Nama Barang</th>
+    <th>Harga Barang</th>
+    <th>Deskripsi</th>
+  </tr>
+  {% comment %} Tambahkan data di bawah baris ini {% endcomment %} {% comment %}
+  {% for barang in list_barang %}
+  <tr>
+    <td>{{barang.nama_barang}}</td>
+    <td>{{barang.harga_barang}}</td>
+    <td>{{barang.deskripsi}}</td>
+  </tr>
+  {% endfor %} {% endcomment %}
+</table>
+<p class="d-flex justify-content-end mx-3">
+  Sesi terakhir login: {{ last_login }}
+</p>
+
+<form id="form" method="POST" style="margin: 24px" action="">
+  {% csrf_token %}
+  <label>Nama Barang</label>
+  <input class="form-control" type="text" name="nama_barang" required />
+
+  <label>Harga Barang</label>
+  <input class="form-control" type="number" name="harga_barang" required />
+
+  <label>Deskripsi Barang</label><br />
+  <textarea class="form-control" style="margin-bottom: 10px"></textarea>
+  <input class="btn btn-primary submit-btn" type="submit" />
+</form>
+
+{% endblock content %}
